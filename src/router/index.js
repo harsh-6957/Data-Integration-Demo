@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import Login from '../components/Login.vue'
 import Getusers from '../components/Getusers.vue'
 import Addusers from '../components/Addusers.vue'
+import Allposted from '../components/Allposted.vue'
+import CommentsList from '../components/CommentsList.vue'
 
 const routes = [
   {
@@ -10,6 +12,14 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+
+  {
+    path: '/',
+    name: 'Allposted',
+    component: Allposted
+  },
+  
+
   {
     path: '/login',
     name: 'login',
@@ -19,6 +29,11 @@ const routes = [
     path: '/getusers/:id',
     name: 'getusers',
     component: Getusers
+  },
+  {
+    path: '/CommentsList/:id',
+    name: 'CommentsList',
+    component: CommentsList
   },
   {
     path: '/addusers/:id',

@@ -1,25 +1,38 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |   <router-link to="/login">Login</router-link>
-<router-link to="/getusers/:id"> <br>Hi,{{ GetuserData }}</router-link>
-<!-- <button  @click="destroyLocal()" > <br>Logout</button> -->
+    <router-link to="/about">About</router-link> |
+    <router-link to="/login">Login</router-link> |
+    <router-link @click="removeAccount" v-if="logout" to="/login"
+      >Logout</router-link
+    >
+    <router-link to="/getusers/:id"> <br />{{ GetuserData }}</router-link>
+    <!-- <button  @click="destroyLocal()" > <br>Logout</button> -->
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 <script>
 export default {
-  computed:{
-    GetuserData(){
+  data() {
+    return {
+      logout: true,
+    };
+  },
+  computed: {
+    GetuserData() {
       let getItem = localStorage.getItem("name");
-      return getItem
+      return getItem;
     },
   },
-    methods:{
-      destroyLocal(){
-        localStorage.clear();      }
-    
-  }}
+  methods: {
+    removeAccount() {
+      this.logout = false;
+
+      localStorage.removeItem("name");
+      // localStorage.clear();
+    },
+  },
+};
 </script>
 <style>
 #app {

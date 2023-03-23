@@ -65,9 +65,19 @@ export default {
             "Content-type": "application/json; charset=UTF-8",
           },
         })
-        .then((response) => response.json())
+        .then((response) => {
+          console.table(response.data);
+          localStorage.setItem("apiData", JSON.stringify(response));
+
+          // response.json()
+        })
         .then((json) => {
-          localStorage.setItem("apiData", json);
+          console.log("ddd", json);
+          // localStorage.setItem("apiData", json);
+          this.activate = true;
+          setTimeout(() => {
+            this.activate = false;
+          }, 2000);
         });
     },
   },
