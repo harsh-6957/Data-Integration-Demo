@@ -2,19 +2,20 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link @click="removeAccount" v-if="logout" to="/login"
+    <router-link v-if="loginActive" to="/login">Login</router-link> |
+    <router-link @click="removeAccount" v-if="loginActive" to="/login"
       >Logout</router-link
     >
-    <router-link to="/getusers/:id"> <br />{{ GetuserData }}</router-link>
+    <!-- <router-link to="/getusers/:id"> <br />{{ GetuserData }}</router-link> -->
     <!-- <button  @click="destroyLocal()" > <br>Logout</button> -->
+    <router-view />
   </nav>
-  <router-view />
 </template>
 <script>
 export default {
   data() {
     return {
+      loginActive:true,
       logout: true,
     };
   },
@@ -25,10 +26,11 @@ export default {
     },
   },
   methods: {
+    
     removeAccount() {
       this.logout = false;
-
       localStorage.removeItem("name");
+      localStorage.removeItem("apiData");
       // localStorage.clear();
     },
   },

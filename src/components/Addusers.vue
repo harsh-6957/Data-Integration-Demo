@@ -10,7 +10,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="title"
+          v-model="form.title"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
         />
@@ -22,7 +22,7 @@
         <label for="exampleInputPassword1">Body</label>
         <textarea
           type="text"
-          v-model="body"
+          v-model="form.body"
           class="form-control"
           id="exampleInputPassword1"
         ></textarea>
@@ -43,6 +43,10 @@ export default {
     return {
       activate: false,
       showMessenge: null,
+      form:{
+        body:"",
+        title:""
+      }
     };
   },
   computed: {
@@ -56,17 +60,13 @@ export default {
     submit() {
       axios
         .post("https://jsonplaceholder.typicode.com/posts", {
-          body: JSON.stringify({
-            title: this.title,
-            body: this.body,
-            userId: 1,
-          }),
+          body: this.form,
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
         })
         .then((response) => {
-          console.table(response.data);
+          console.table("",response.data);
           localStorage.setItem("apiData", JSON.stringify(response));
 
           // response.json()

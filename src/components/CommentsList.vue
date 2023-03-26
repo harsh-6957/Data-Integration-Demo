@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="card">
-        <router-link :to="{ path: '/home/' + this.$route.params.id }">All-posts</router-link>
+        <!-- <router-link :to="{ path: '/' + this.$route.params.id }">All-posts</router-link> -->
+        <router-link :to="{ path: '/' }">All-posts</router-link>
 
       <div class="card-header">CommentsList</div>
       <div v-for="Lists in List" :key="Lists.id" class="card-body">

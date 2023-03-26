@@ -10,6 +10,13 @@
         >
       </div>
     </div>
+    <input
+          type="email"
+          class="form-control"
+          v-model="email"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
   </div>
 </template>
 
